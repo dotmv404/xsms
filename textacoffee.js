@@ -95,19 +95,31 @@ async function postRequest(cookies, csrfToken, number) {
       }
     );
 
-    console.log("POST response:", response.data);
+    console.log("success");
   } catch (error) {
     console.error("Error in POST request:", error);
   }
 }
 
-async function textcoffe(aa) {
+async function textcoffe(aa,amountloop) {
   let a = aa;
   const result = await getCookiesAndCsrfToken();
   if (result) {
     const { cookies, csrfToken } = result;
     if (cookies && csrfToken) {
-      await postRequest(cookies, csrfToken, a);
+
+
+
+      for (let i = 1; i <= amountloop; i++) {
+        await postRequest(cookies, csrfToken, a);
+
+            await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+
+
+
+
+
     } else {
       console.error("Failed to retrieve cookies or CSRF token");
     }
@@ -115,6 +127,13 @@ async function textcoffe(aa) {
     console.error("Failed to retrieve cookies or CSRF token");
   }
 }
+
+
+
+
+
+
+
 
 module.exports = {
   textcoffe
