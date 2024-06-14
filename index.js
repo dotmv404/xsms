@@ -19,12 +19,11 @@ if (message[0].length < 5) return
 async function runLoop(lmsg,lnumber) {
     for (let i = 1; i <= lnumber; i++) {
 textcoffe(lmsg);
-  bot.sendMessage(chatId, i+" sent...");
+  bot.sendMessage(chatId, `Attack ${i}  ✅`);
     
       await new Promise(resolve => setTimeout(resolve, 2000));
     }
   }
-  bot.sendMessage(chatId, "Attacking in progress....");
 
   runLoop(message[0],message[1])
 
@@ -46,7 +45,7 @@ function checkIfNumber(value) {
 
 const express = require('express');
 const app = express();
-const port = 80; 
+const port = 3000; 
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
